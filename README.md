@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>CIUE · Register & Earn</title>
+  <title>CIUE · Welcome</title>
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -15,7 +15,7 @@
     }
 
     body {
-      background: #eef2f7;
+      background: #ffffff;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -30,10 +30,9 @@
       width: 100%;
       background-color: #ffffff;
       border-radius: 40px;
-      box-shadow: 0 25px 60px rgba(0, 20, 30, 0.15), 0 8px 20px rgba(0, 40, 60, 0.1);
+      box-shadow: 0 25px 60px rgba(0, 20, 30, 0.15);
       overflow: hidden;
-      padding: 20px 18px 12px 18px;
-      transition: all 0.2s;
+      padding: 30px 20px 20px 20px;
     }
 
     /* Auth Pages */
@@ -234,16 +233,205 @@
       display: none;
     }
 
-    /* Balance Display */
-    .balance-container {
-      background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
-      border-radius: 30px;
-      padding: 16px 20px;
-      margin-bottom: 24px;
+    /* Welcome Section - REDESIGNED to match image */
+    .welcome-section {
+      margin-bottom: 30px;
+    }
+
+    .welcome-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #000000;
+      line-height: 1.2;
+      margin-bottom: 5px;
+    }
+
+    .welcome-subtitle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #333333;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      max-width: 90%;
+    }
+
+    .divider-line {
+      width: 100%;
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 15px 0;
+    }
+
+    /* Collaboration Text */
+    .collab-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 20px;
+    }
+
+    .collab-title i {
+      color: #006a7a;
+      margin-right: 8px;
+    }
+
+    /* Task Hall Section */
+    .task-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border: 1px solid #80deea;
+      margin-bottom: 20px;
+    }
+
+    .task-header h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .teaser-badge {
+      background: #333333;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      letter-spacing: 0.5px;
+    }
+
+    /* Card Grid - Redesigned to match image */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .reward-card {
+      background: #ffffff;
+      border-radius: 0;
+      padding: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .card-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #000000;
+    }
+
+    .card-value {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #000000;
+    }
+
+    .card-value small {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #666666;
+      margin-left: 2px;
+    }
+
+    /* Action Row - Redesigned to match image */
+    .action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 25px 0 20px 0;
+    }
+
+    .action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      color: #000000;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .action-item i {
+      font-size: 1.3rem;
+      color: #000000;
+    }
+
+    .company-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      padding: 15px 0;
+      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: 20px;
+    }
+
+    .company-line span {
+      font-weight: 500;
+      color: #000000;
+      font-size: 1rem;
+    }
+
+    .company-line i {
+      color: #000000;
+      font-size: 1rem;
+    }
+
+    /* Bottom Navigation - Redesigned to match image */
+    .bottom-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: #ffffff;
+      padding: 15px 0 10px 0;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 10px;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #999999;
+      font-size: 0.75rem;
+      font-weight: 500;
+      gap: 4px;
+    }
+
+    .nav-item i {
+      font-size: 1.3rem;
+      color: #999999;
+    }
+
+    .nav-item.active {
+      color: #000000;
+    }
+
+    .nav-item.active i {
+      color: #000000;
+    }
+
+    /* Balance Display - Keep for functionality but style simply */
+    .balance-container {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #eaeaea;
     }
 
     .balance-label {
@@ -253,299 +441,52 @@
     }
 
     .balance-label i {
-      font-size: 2rem;
-      color: #006064;
-      background: white;
-      padding: 10px;
-      border-radius: 50%;
+      font-size: 1.5rem;
+      color: #333;
     }
 
     .balance-info h4 {
-      color: #004d5a;
-      font-size: 0.9rem;
-      font-weight: 500;
+      color: #666;
+      font-size: 0.8rem;
+      font-weight: 400;
     }
 
     .balance-info .amount {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #00363a;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000;
       line-height: 1.2;
     }
 
     .balance-info .amount small {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #006a7a;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #666;
     }
 
     .history-btn {
-      background: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 30px;
-      color: #006a7a;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,100,110,0.2);
-    }
-
-    /* Welcome header */
-    .welcome-section {
-      margin-bottom: 22px;
-    }
-
-    .hello-tag {
-      color: #006064;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .main-headline {
-      font-size: 1.9rem;
-      font-weight: 700;
-      line-height: 1.2;
-      color: #0b2b3b;
-    }
-
-    .main-headline span {
-      display: block;
-      font-size: 1rem;
-      font-weight: 400;
-      color: #3f5e6b;
-      margin-top: 6px;
-      letter-spacing: -0.2px;
-    }
-
-    .divider {
-      height: 2px;
-      background: linear-gradient(90deg, #00bcd4 0%, #b2ebf2 70%, #e0f7fa 100%);
-      width: 70px;
-      margin: 18px 0 20px 0;
-      border-radius: 4px;
-    }
-
-    .collab-text {
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: #1d4e5f;
-      margin-bottom: 24px;
-      line-height: 1.3;
-    }
-
-    .collab-text i {
-      color: #00acc1;
-      margin-right: 6px;
-    }
-
-    .task-hall-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .task-hall-label h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #003d4d;
-      letter-spacing: -0.3px;
-    }
-
-    .task-hall-label i {
-      font-size: 1.6rem;
-      color: #00bcd4;
-      background: #e0f7fa;
-      padding: 8px;
-      border-radius: 18px;
-    }
-
-    .teaser-badge {
-      background: #00838f;
-      color: white;
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      display: inline-block;
-      margin-bottom: 12px;
-      letter-spacing: 0.3px;
-    }
-
-    .card-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .reward-card {
-      background: #f9fbfd;
-      border-radius: 28px;
-      padding: 16px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid #d6e9ed;
-      box-shadow: 0 5px 12px rgba(0, 140, 150, 0.06);
-    }
-
-    .card-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      background: #d2f1f5;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #006a7a;
-      font-size: 1.5rem;
-    }
-
-    .card-title {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: #144f5c;
-    }
-
-    .card-value {
-      font-weight: 800;
-      font-size: 1.3rem;
-      background: linear-gradient(145deg, #006a7a, #00b2c9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: 0.5px;
-    }
-
-    .card-value small {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #3f98a7;
       background: none;
-      -webkit-text-fill-color: #3f98a7;
-    }
-
-    .action-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      background: #ecf7f9;
-      padding: 12px 10px;
-      border-radius: 60px;
-      margin: 24px 0 20px 0;
-    }
-
-    .action-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: #006b7a;
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      border-radius: 20px;
+      color: #333;
       font-weight: 500;
-      font-size: 0.9rem;
       cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .action-item i {
-      font-size: 1.5rem;
-      background: white;
-      padding: 10px;
-      border-radius: 40px;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,150,160,0.15);
-      color: #006a7a;
-    }
-
-    .action-item:hover i {
-      background: #00bcd4;
-      color: white;
-    }
-
-    .company-line {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: white;
-      border: 1px solid #cae3e8;
-      padding: 12px 18px;
-      border-radius: 30px;
-      margin-bottom: 22px;
-    }
-
-    .company-line span {
-      font-weight: 600;
-      color: #1b4e5b;
-      font-size: 1rem;
-    }
-
-    .company-line i {
-      color: #00a5b9;
-      font-size: 1.3rem;
-    }
-
-    .bottom-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      background: #ffffff;
-      padding: 8px 0 6px 0;
-      border-top: 2px solid #e3f0f3;
-      margin-top: 12px;
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #597e89;
-      font-size: 0.75rem;
-      font-weight: 500;
-      gap: 4px;
-    }
-
-    .nav-item i {
-      font-size: 1.4rem;
-      color: #89b8c5;
-    }
-
-    .nav-item.active {
-      color: #006a7a;
-    }
-
-    .nav-item.active i {
-      color: #00b2c9;
+      font-size: 0.8rem;
     }
 
     .logout-btn {
       background: none;
-      border: 1px solid #cae3e8;
-      color: #006a7a;
+      border: 1px solid #ddd;
+      color: #333;
       padding: 8px 15px;
-      border-radius: 30px;
+      border-radius: 20px;
       cursor: pointer;
       font-size: 0.9rem;
-      transition: all 0.2s;
     }
 
     .logout-btn:hover {
-      background: #fff0e0;
-      border-color: #ff9800;
-      color: #ff9800;
+      background: #f5f5f5;
     }
 
     /* Deposit Modal Styles */
@@ -566,9 +507,9 @@
       background: white;
       max-width: 390px;
       width: 90%;
-      border-radius: 40px;
+      border-radius: 30px;
       padding: 24px;
-      box-shadow: 0 30px 60px rgba(0,50,60,0.4);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
       max-height: 90vh;
       overflow-y: auto;
     }
@@ -581,149 +522,107 @@
     }
 
     .modal-header h2 {
-      color: #006064;
-      font-size: 1.6rem;
+      color: #000;
+      font-size: 1.4rem;
     }
 
     .close-btn {
       background: none;
       border: none;
       font-size: 1.8rem;
-      color: #597e89;
+      color: #999;
       cursor: pointer;
     }
 
     .recipient-card {
-      background: #e0f7fa;
-      border-radius: 20px;
+      background: #f9f9f9;
+      border-radius: 15px;
       padding: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       text-align: center;
-      border: 2px dashed #00838f;
-    }
-
-    .recipient-card i {
-      font-size: 2rem;
-      color: #006064;
-      margin-bottom: 8px;
+      border: 1px solid #eaeaea;
     }
 
     .recipient-card .number {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #003d4d;
-      letter-spacing: 1px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #000;
     }
 
     .recipient-card .name {
-      color: #006a7a;
-      font-weight: 600;
+      color: #666;
+      font-weight: 500;
       margin-top: 5px;
     }
 
-    .recipient-card .warning {
-      font-size: 0.8rem;
-      color: #d32f2f;
-      margin-top: 10px;
-      background: #ffebee;
-      padding: 5px;
-      border-radius: 30px;
-    }
-
     .deposit-option {
-      background: #f0fafc;
-      border: 2px solid #b2ebf2;
-      border-radius: 20px;
-      padding: 16px;
-      margin-bottom: 16px;
+      background: #f9f9f9;
+      border: 1px solid #eaeaea;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 15px;
       cursor: pointer;
-      transition: all 0.2s;
     }
 
     .deposit-option:hover {
-      background: #e0f7fa;
-      border-color: #00bcd4;
-      transform: scale(1.02);
+      background: #f0f0f0;
     }
 
     .deposit-option i {
-      font-size: 2.2rem;
-      color: #006a7a;
-      width: 50px;
-      text-align: center;
+      font-size: 1.8rem;
+      color: #333;
     }
 
     .deposit-option .info h3 {
-      color: #003d4d;
-      margin-bottom: 4px;
+      color: #000;
+      font-size: 1.1rem;
+      margin-bottom: 3px;
     }
 
     .deposit-option .info p {
-      color: #3f5e6b;
-      font-size: 0.9rem;
-    }
-
-    .custom-amount {
-      margin-top: 20px;
+      color: #666;
+      font-size: 0.8rem;
     }
 
     .custom-amount input {
       width: 100%;
-      padding: 18px;
-      border: 2px solid #b2ebf2;
-      border-radius: 30px;
-      font-size: 1.1rem;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      font-size: 1rem;
       text-align: center;
-      font-weight: 600;
-      color: #006064;
-    }
-
-    .deposit-btn {
-      background: linear-gradient(135deg, #006a7a, #00bcd4);
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 18px;
-      border-radius: 40px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-top: 20px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .deposit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0,150,170,0.4);
     }
 
     .ussd-code {
       background: #f5f5f5;
       padding: 15px;
-      border-radius: 20px;
+      border-radius: 15px;
       text-align: center;
       margin: 15px 0;
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #003d4d;
-      letter-spacing: 2px;
-      border: 1px solid #00bcd4;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #000;
+      border: 1px solid #ddd;
     }
 
-    .transaction-history {
-      margin-top: 20px;
-      max-height: 200px;
-      overflow-y: auto;
+    .deposit-btn {
+      background: #000;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 16px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 15px;
+      cursor: pointer;
     }
 
-    .transaction-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px;
-      border-bottom: 1px solid #e0f0f3;
+    .deposit-btn:hover {
+      background: #333;
     }
   </style>
 </head>
@@ -845,26 +744,16 @@
       </div>
     </div>
 
-    <!-- MAIN DASHBOARD (hidden initially) -->
+    <!-- MAIN DASHBOARD - REDESIGNED TO MATCH IMAGE -->
     <div id="mainDashboard">
-      <!-- header with user greeting -->
+      <!-- Welcome header exactly as in image -->
       <div class="welcome-section">
-        <div class="hello-tag" id="userGreeting">
-          <i class="far fa-hand-peace" style="margin-right: 6px;"></i> 
-          WELCOME BACK, <span id="userName">USER</span>
-        </div>
-        <div class="main-headline">
-          NEW OPPORTUNITIES <span>Collaborate and earn together</span>
-        </div>
-        <div class="divider"></div>
+        <div class="welcome-title">WELCOME</div>
+        <div class="welcome-subtitle">NEW OPPORTUNITIES AND CHALLENGES WORK TOGETHER TO CREATE A BETTER FUTURE</div>
+        <div class="divider-line"></div>
       </div>
 
-      <!-- Collaboration belief line -->
-      <div class="collab-text">
-        <i class="fas fa-handshake"></i> Collaboration. We believe that every employee can:
-      </div>
-
-      <!-- BALANCE DISPLAY -->
+      <!-- Balance Display (functional but minimal) -->
       <div class="balance-container">
         <div class="balance-label">
           <i class="fas fa-wallet"></i>
@@ -876,85 +765,81 @@
         <button class="history-btn" onclick="showHistory()"><i class="fas fa-history"></i> History</button>
       </div>
 
-      <!-- Task Hall area -->
-      <div class="task-hall-label">
-        <i class="fas fa-clipboard-list"></i>
-        <h3>Task Hall</h3>
+      <!-- Collaboration text as in image -->
+      <div class="collab-title">
+        <i class="fas fa-handshake"></i> Collaboration. We Believe That Every Employee Can:
       </div>
-      <span class="teaser-badge">✨ TEASER · fresh tasks</span>
 
+      <!-- Task Hall section as in image -->
+      <div class="task-header">
+        <h3>Task Hall</h3>
+        <span class="teaser-badge">TEASER</span>
+      </div>
+
+      <!-- Cards exactly as in image -->
       <div class="card-grid">
         <div class="reward-card">
           <div class="card-left">
-            <div class="card-icon"><i class="fas fa-bolt"></i></div>
             <span class="card-title">TEASER</span>
           </div>
-          <div class="card-value">+1,200 <small>UGX</small></div>
+          <div class="card-value">+1200.00 <small>UGX</small></div>
         </div>
+        
         <div class="reward-card">
           <div class="card-left">
-            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
             <span class="card-title">VAF</span>
           </div>
-          <div class="card-value">+1,200 <small>UGX</small></div>
+          <div class="card-value">+1200.00 <small>UGX</small></div>
         </div>
+        
         <div class="reward-card">
           <div class="card-left">
-            <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
             <span class="card-title">Out of Ideas</span>
           </div>
-          <div class="card-value">+1,200 <small>UGX</small></div>
+          <div class="card-value">+1200.00 <small>UGX</small></div>
         </div>
       </div>
 
-      <!-- Action row with clickable recharge -->
+      <!-- Action row exactly as in image (bullet points) -->
       <div class="action-row">
         <div class="action-item" onclick="openDepositModal()">
-          <i class="fas fa-wallet"></i>
-          <span>Recharge</span>
+          <span>• Recharge</span>
         </div>
         <div class="action-item" onclick="alert('Withdraw feature coming soon!')">
-          <i class="fas fa-hand-holding-usd"></i>
-          <span>Withdraw</span>
+          <span>• Withdraw</span>
         </div>
         <div class="action-item" onclick="alert('Company profile')">
-          <i class="fas fa-building"></i>
-          <span>Company</span>
+          <span>• Company Profile</span>
         </div>
       </div>
 
-      <!-- Company Profile line -->
+      <!-- Company Profile line (simple) -->
       <div class="company-line">
-        <span><i class="far fa-id-card" style="margin-right: 10px; color: #00838f;"></i> Company Profile</span>
+        <span>Company Profile</span>
         <i class="fas fa-chevron-right"></i>
       </div>
 
-      <!-- bottom nav -->
+      <!-- Bottom navigation exactly as in image -->
       <div class="bottom-nav">
         <div class="nav-item active">
-          <i class="fas fa-home"></i>
           <span>Home</span>
         </div>
         <div class="nav-item">
-          <i class="fas fa-tasks"></i>
           <span>Task</span>
         </div>
         <div class="nav-item">
-          <i class="fas fa-chart-simple"></i>
           <span>Level</span>
         </div>
         <div class="nav-item">
-          <i class="fas fa-coins"></i>
           <span>Income</span>
         </div>
         <div class="nav-item">
-          <i class="fas fa-user"></i>
           <span>Me</span>
         </div>
       </div>
       
-      <!-- Logout button at bottom -->
-      <div style="text-align: center; margin-top: 15px; margin-bottom: 5px;">
+      <!-- Logout button -->
+      <div style="text-align: center; margin-top: 20px;">
         <button class="logout-btn" onclick="logout()">
           <i class="fas fa-sign-out-alt"></i> Logout
         </button>
@@ -962,7 +847,7 @@
     </div>
   </div>
 
-  <!-- DEPOSIT MODAL - with Mobile Money integration -->
+  <!-- DEPOSIT MODAL -->
   <div class="modal-overlay" id="depositModal">
     <div class="modal-content">
       <div class="modal-header">
@@ -970,14 +855,10 @@
         <button class="close-btn" onclick="closeDepositModal()">&times;</button>
       </div>
       
-      <!-- Recipient info (fixed to 0756673144 / NAMUHANGA VERONIC) -->
+      <!-- Recipient info -->
       <div class="recipient-card">
-        <i class="fas fa-user-check"></i>
         <div class="number">0756 673 144</div>
         <div class="name">NAMUHANGA VERONIC</div>
-        <div class="warning">
-          <i class="fas fa-exclamation-triangle"></i> Send money to this number only
-        </div>
       </div>
 
       <!-- Quick deposit options -->
@@ -1021,7 +902,7 @@
       
       <!-- Transaction history -->
       <div id="historySection" style="display: none;" class="transaction-history">
-        <h3 style="color: #006064; margin-bottom: 10px;">Recent deposits</h3>
+        <h3 style="margin-bottom: 10px;">Recent deposits</h3>
         <div id="transactionList"></div>
       </div>
     </div>
@@ -1067,14 +948,12 @@
     function handleRegister(event) {
       event.preventDefault();
       
-      // Get form values
       const fullName = document.getElementById('regFullName').value.trim();
       const phone = document.getElementById('regPhone').value.trim();
       const country = document.getElementById('regCountry').value;
       const password = document.getElementById('regPassword').value;
       const confirmPass = document.getElementById('regConfirmPassword').value;
       
-      // Validate
       if (!fullName || !phone || !country || !password || !confirmPass) {
         showMessage('Please fill in all fields', false);
         return;
@@ -1090,7 +969,6 @@
         return;
       }
       
-      // Check if user already exists in localStorage
       const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
       
       if (users[phone]) {
@@ -1099,14 +977,13 @@
         return;
       }
       
-      // Save user
       users[phone] = {
         fullName: fullName,
         phone: phone,
         country: country,
         password: password,
         registeredDate: new Date().toISOString(),
-        balance: 12500, // Starting balance
+        balance: 12500,
         transactions: [
           { type: 'deposit', amount: 10000, date: '2024-01-15' },
           { type: 'deposit', amount: 2500, date: '2024-01-14' }
@@ -1114,13 +991,10 @@
       };
       
       localStorage.setItem('cueUsers', JSON.stringify(users));
-      
-      // Auto login after registration
       localStorage.setItem('currentUser', phone);
       
       showMessage('Registration successful! Welcome to CIUE!');
       
-      // Show dashboard
       setTimeout(() => {
         showDashboard(phone);
       }, 1000);
@@ -1138,7 +1012,6 @@
         return;
       }
       
-      // Get users from localStorage
       const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
       const user = users[phone];
       
@@ -1147,12 +1020,10 @@
         return;
       }
       
-      // Save current user
       localStorage.setItem('currentUser', phone);
       
       showMessage('Login successful! Welcome back!');
       
-      // Show dashboard
       setTimeout(() => {
         showDashboard(phone);
       }, 1000);
@@ -1165,14 +1036,9 @@
       
       if (!user) return;
       
-      // Update greeting and balance
-      document.getElementById('userName').textContent = user.fullName.split(' ')[0];
       document.getElementById('balanceAmount').innerHTML = `${(user.balance || 12500).toLocaleString()} <small>UGX</small>`;
-      
-      // Store current user phone for deposit functions
       window.currentUserPhone = phone;
       
-      // Hide auth, show dashboard
       document.getElementById('authContainer').style.display = 'none';
       document.getElementById('mainDashboard').style.display = 'block';
     }
@@ -1184,7 +1050,6 @@
       document.getElementById('mainDashboard').style.display = 'none';
       switchAuthTab('login');
       
-      // Clear forms
       document.getElementById('loginPhone').value = '';
       document.getElementById('loginPassword').value = '';
     }
@@ -1225,7 +1090,7 @@
         return;
       }
       
-      if (confirm(`Send ${amount.toLocaleString()} UGX to ${RECIPIENT_NUMBER} (${RECIPIENT_NAME})?\n\nYou will be redirected to mobile money.`)) {
+      if (confirm(`Send ${amount.toLocaleString()} UGX to ${RECIPIENT_NUMBER} (${RECIPIENT_NAME})?`)) {
         
         const ussdCode = `*165*1*${RECIPIENT_NUMBER}*${amount}#`;
         window.location.href = `tel:${ussdCode}`;
@@ -1234,7 +1099,6 @@
           alert(`📱 Dial ${ussdCode} manually to complete payment`);
         }, 500);
         
-        // Update user balance in localStorage
         const currentUser = localStorage.getItem('currentUser');
         if (currentUser) {
           const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
@@ -1248,12 +1112,11 @@
             });
             localStorage.setItem('cueUsers', JSON.stringify(users));
             
-            // Update display
             document.getElementById('balanceAmount').innerHTML = `${users[currentUser].balance.toLocaleString()} <small>UGX</small>`;
           }
         }
         
-        alert(`⏳ Payment initiated!\n\nPlease complete the transaction on your phone.\n\nOnce payment is confirmed, your balance will update automatically.`);
+        alert(`⏳ Payment initiated!\n\nPlease complete the transaction on your phone.`);
       }
     }
     
@@ -1269,15 +1132,15 @@
       let html = '';
       transactions.forEach(t => {
         html += `
-          <div class="transaction-item">
-            <span><i class="fas fa-arrow-down" style="color: #00a86b;"></i> +${t.amount.toLocaleString()} UGX</span>
-            <span style="color: #597e89;">${t.date}</span>
+          <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee;">
+            <span>+${t.amount.toLocaleString()} UGX</span>
+            <span style="color:#666;">${t.date}</span>
           </div>
         `;
       });
       
       if (transactions.length === 0) {
-        html = '<p style="color: #597e89; text-align: center;">No transactions yet</p>';
+        html = '<p style="color:#666; text-align:center;">No transactions yet</p>';
       }
       
       transactionList.innerHTML = html;
@@ -1290,7 +1153,6 @@
       }
     }
     
-    // Close modal when clicking outside
     window.onclick = function(event) {
       let modal = document.getElementById('depositModal');
       if (event.target === modal) {
@@ -1298,10 +1160,8 @@
       }
     }
     
-    // Initialize amount input listener
     document.getElementById('customAmount')?.addEventListener('input', updateUssdCode);
 
-    // Check if user is already logged in on page load
     window.onload = function() {
       const currentUser = localStorage.getItem('currentUser');
       
