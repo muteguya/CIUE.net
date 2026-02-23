@@ -1,4 +1,4 @@
-here<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -547,6 +547,184 @@ here<!DOCTYPE html>
       border-color: #ff9800;
       color: #ff9800;
     }
+
+    /* Deposit Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      max-width: 390px;
+      width: 90%;
+      border-radius: 40px;
+      padding: 24px;
+      box-shadow: 0 30px 60px rgba(0,50,60,0.4);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+      color: #006064;
+      font-size: 1.6rem;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: #597e89;
+      cursor: pointer;
+    }
+
+    .recipient-card {
+      background: #e0f7fa;
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+      border: 2px dashed #00838f;
+    }
+
+    .recipient-card i {
+      font-size: 2rem;
+      color: #006064;
+      margin-bottom: 8px;
+    }
+
+    .recipient-card .number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #003d4d;
+      letter-spacing: 1px;
+    }
+
+    .recipient-card .name {
+      color: #006a7a;
+      font-weight: 600;
+      margin-top: 5px;
+    }
+
+    .recipient-card .warning {
+      font-size: 0.8rem;
+      color: #d32f2f;
+      margin-top: 10px;
+      background: #ffebee;
+      padding: 5px;
+      border-radius: 30px;
+    }
+
+    .deposit-option {
+      background: #f0fafc;
+      border: 2px solid #b2ebf2;
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .deposit-option:hover {
+      background: #e0f7fa;
+      border-color: #00bcd4;
+      transform: scale(1.02);
+    }
+
+    .deposit-option i {
+      font-size: 2.2rem;
+      color: #006a7a;
+      width: 50px;
+      text-align: center;
+    }
+
+    .deposit-option .info h3 {
+      color: #003d4d;
+      margin-bottom: 4px;
+    }
+
+    .deposit-option .info p {
+      color: #3f5e6b;
+      font-size: 0.9rem;
+    }
+
+    .custom-amount {
+      margin-top: 20px;
+    }
+
+    .custom-amount input {
+      width: 100%;
+      padding: 18px;
+      border: 2px solid #b2ebf2;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      text-align: center;
+      font-weight: 600;
+      color: #006064;
+    }
+
+    .deposit-btn {
+      background: linear-gradient(135deg, #006a7a, #00bcd4);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 18px;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .deposit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,150,170,0.4);
+    }
+
+    .ussd-code {
+      background: #f5f5f5;
+      padding: 15px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 15px 0;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #003d4d;
+      letter-spacing: 2px;
+      border: 1px solid #00bcd4;
+    }
+
+    .transaction-history {
+      margin-top: 20px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .transaction-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px;
+      border-bottom: 1px solid #e0f0f3;
+    }
   </style>
 </head>
 <body>
@@ -681,7 +859,12 @@ here<!DOCTYPE html>
         <div class="divider"></div>
       </div>
 
-      <!-- Balance Display -->
+      <!-- Collaboration belief line -->
+      <div class="collab-text">
+        <i class="fas fa-handshake"></i> Collaboration. We believe that every employee can:
+      </div>
+
+      <!-- BALANCE DISPLAY -->
       <div class="balance-container">
         <div class="balance-label">
           <i class="fas fa-wallet"></i>
@@ -690,9 +873,7 @@ here<!DOCTYPE html>
             <div class="amount" id="balanceAmount">12,500 <small>UGX</small></div>
           </div>
         </div>
-        <button class="logout-btn" onclick="logout()">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
+        <button class="history-btn" onclick="showHistory()"><i class="fas fa-history"></i> History</button>
       </div>
 
       <!-- Task Hall area -->
@@ -726,9 +907,9 @@ here<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- Action row -->
+      <!-- Action row with clickable recharge -->
       <div class="action-row">
-        <div class="action-item" onclick="alert('Deposit feature coming soon!')">
+        <div class="action-item" onclick="openDepositModal()">
           <i class="fas fa-wallet"></i>
           <span>Recharge</span>
         </div>
@@ -770,6 +951,78 @@ here<!DOCTYPE html>
           <i class="fas fa-user"></i>
           <span>Me</span>
         </div>
+      </div>
+      
+      <!-- Logout button at bottom -->
+      <div style="text-align: center; margin-top: 15px; margin-bottom: 5px;">
+        <button class="logout-btn" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPOSIT MODAL - with Mobile Money integration -->
+  <div class="modal-overlay" id="depositModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2><i class="fas fa-mobile-alt"></i> Mobile Money</h2>
+        <button class="close-btn" onclick="closeDepositModal()">&times;</button>
+      </div>
+      
+      <!-- Recipient info (fixed to 0756673144 / NAMUHANGA VERONIC) -->
+      <div class="recipient-card">
+        <i class="fas fa-user-check"></i>
+        <div class="number">0756 673 144</div>
+        <div class="name">NAMUHANGA VERONIC</div>
+        <div class="warning">
+          <i class="fas fa-exclamation-triangle"></i> Send money to this number only
+        </div>
+      </div>
+
+      <!-- Quick deposit options -->
+      <div class="deposit-option" onclick="setDepositAmount(10000)">
+        <i class="fas fa-bolt"></i>
+        <div class="info">
+          <h3>10,000 UGX</h3>
+          <p>Quick deposit</p>
+        </div>
+      </div>
+      
+      <div class="deposit-option" onclick="setDepositAmount(50000)">
+        <i class="fas fa-star"></i>
+        <div class="info">
+          <h3>50,000 UGX</h3>
+          <p>Most popular</p>
+        </div>
+      </div>
+      
+      <div class="deposit-option" onclick="setDepositAmount(100000)">
+        <i class="fas fa-crown"></i>
+        <div class="info">
+          <h3>100,000 UGX</h3>
+          <p>Premium</p>
+        </div>
+      </div>
+      
+      <!-- Custom amount -->
+      <div class="custom-amount">
+        <input type="number" id="customAmount" placeholder="Enter amount (UGX)" min="1000" step="1000">
+      </div>
+
+      <!-- USSD Code Display -->
+      <div class="ussd-code" id="ussdDisplay">
+        *165*1*0756673144*<span id="amountDisplay">AMOUNT</span>#
+      </div>
+      
+      <button class="deposit-btn" onclick="processDeposit()">
+        <i class="fas fa-mobile-alt"></i> Pay with Mobile Money
+      </button>
+      
+      <!-- Transaction history -->
+      <div id="historySection" style="display: none;" class="transaction-history">
+        <h3 style="color: #006064; margin-bottom: 10px;">Recent deposits</h3>
+        <div id="transactionList"></div>
       </div>
     </div>
   </div>
@@ -853,7 +1106,11 @@ here<!DOCTYPE html>
         country: country,
         password: password,
         registeredDate: new Date().toISOString(),
-        balance: 12500 // Starting balance
+        balance: 12500, // Starting balance
+        transactions: [
+          { type: 'deposit', amount: 10000, date: '2024-01-15' },
+          { type: 'deposit', amount: 2500, date: '2024-01-14' }
+        ]
       };
       
       localStorage.setItem('cueUsers', JSON.stringify(users));
@@ -908,9 +1165,12 @@ here<!DOCTYPE html>
       
       if (!user) return;
       
-      // Update greeting
+      // Update greeting and balance
       document.getElementById('userName').textContent = user.fullName.split(' ')[0];
-      document.getElementById('balanceAmount').innerHTML = `${user.balance.toLocaleString()} <small>UGX</small>`;
+      document.getElementById('balanceAmount').innerHTML = `${(user.balance || 12500).toLocaleString()} <small>UGX</small>`;
+      
+      // Store current user phone for deposit functions
+      window.currentUserPhone = phone;
       
       // Hide auth, show dashboard
       document.getElementById('authContainer').style.display = 'none';
@@ -929,6 +1189,118 @@ here<!DOCTYPE html>
       document.getElementById('loginPassword').value = '';
     }
 
+    // DEPOSIT MODAL FUNCTIONS
+    const RECIPIENT_NUMBER = '0756673144';
+    const RECIPIENT_NAME = 'NAMUHANGA VERONIC';
+    
+    function openDepositModal() {
+      document.getElementById('depositModal').style.display = 'flex';
+      updateUssdCode();
+    }
+    
+    function closeDepositModal() {
+      document.getElementById('depositModal').style.display = 'none';
+    }
+    
+    function setDepositAmount(amount) {
+      document.getElementById('customAmount').value = amount;
+      updateUssdCode();
+    }
+    
+    function updateUssdCode() {
+      let amount = document.getElementById('customAmount').value;
+      if (!amount || amount < 1000) {
+        amount = 'AMOUNT';
+      } else {
+        amount = parseInt(amount).toLocaleString() + ' UGX';
+      }
+      document.getElementById('amountDisplay').textContent = amount;
+    }
+    
+    function processDeposit() {
+      let amount = parseInt(document.getElementById('customAmount').value);
+      
+      if (!amount || amount < 1000) {
+        alert('❌ Please enter a valid amount (minimum 1000 UGX)');
+        return;
+      }
+      
+      if (confirm(`Send ${amount.toLocaleString()} UGX to ${RECIPIENT_NUMBER} (${RECIPIENT_NAME})?\n\nYou will be redirected to mobile money.`)) {
+        
+        const ussdCode = `*165*1*${RECIPIENT_NUMBER}*${amount}#`;
+        window.location.href = `tel:${ussdCode}`;
+        
+        setTimeout(() => {
+          alert(`📱 Dial ${ussdCode} manually to complete payment`);
+        }, 500);
+        
+        // Update user balance in localStorage
+        const currentUser = localStorage.getItem('currentUser');
+        if (currentUser) {
+          const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
+          if (users[currentUser]) {
+            users[currentUser].balance = (users[currentUser].balance || 12500) + amount;
+            if (!users[currentUser].transactions) users[currentUser].transactions = [];
+            users[currentUser].transactions.unshift({
+              type: 'deposit',
+              amount: amount,
+              date: new Date().toLocaleDateString()
+            });
+            localStorage.setItem('cueUsers', JSON.stringify(users));
+            
+            // Update display
+            document.getElementById('balanceAmount').innerHTML = `${users[currentUser].balance.toLocaleString()} <small>UGX</small>`;
+          }
+        }
+        
+        alert(`⏳ Payment initiated!\n\nPlease complete the transaction on your phone.\n\nOnce payment is confirmed, your balance will update automatically.`);
+      }
+    }
+    
+    function showHistory() {
+      let historyDiv = document.getElementById('historySection');
+      let transactionList = document.getElementById('transactionList');
+      
+      const currentUser = localStorage.getItem('currentUser');
+      const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
+      const user = users[currentUser];
+      const transactions = user?.transactions || [];
+      
+      let html = '';
+      transactions.forEach(t => {
+        html += `
+          <div class="transaction-item">
+            <span><i class="fas fa-arrow-down" style="color: #00a86b;"></i> +${t.amount.toLocaleString()} UGX</span>
+            <span style="color: #597e89;">${t.date}</span>
+          </div>
+        `;
+      });
+      
+      if (transactions.length === 0) {
+        html = '<p style="color: #597e89; text-align: center;">No transactions yet</p>';
+      }
+      
+      transactionList.innerHTML = html;
+      
+      if (historyDiv.style.display === 'none') {
+        historyDiv.style.display = 'block';
+        openDepositModal();
+      } else {
+        historyDiv.style.display = 'none';
+      }
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      let modal = document.getElementById('depositModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
+    
+    // Initialize amount input listener
+    document.getElementById('customAmount')?.addEventListener('input', updateUssdCode);
+
     // Check if user is already logged in on page load
     window.onload = function() {
       const currentUser = localStorage.getItem('currentUser');
@@ -942,21 +1314,8 @@ here<!DOCTYPE html>
         }
       }
       
-      // Add country flags mapping
-      const countryFlags = {
-        'UG': '🇺🇬 Uganda',
-        'KE': '🇰🇪 Kenya',
-        'TZ': '🇹🇿 Tanzania',
-        'BI': '🇧🇮 Burundi',
-        'SS': '🇸🇸 South Sudan'
-      };
-    }
-
-    // Demo accounts for testing
-    function createDemoAccounts() {
+      // Create demo account if none exists
       const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
-      
-      // Add demo account if none exists
       if (Object.keys(users).length === 0) {
         users['0756673144'] = {
           fullName: 'NAMUHANGA VERONIC',
@@ -964,14 +1323,15 @@ here<!DOCTYPE html>
           country: 'UG',
           password: '123456',
           registeredDate: new Date().toISOString(),
-          balance: 12500
+          balance: 12500,
+          transactions: [
+            { type: 'deposit', amount: 10000, date: '2024-01-15' },
+            { type: 'deposit', amount: 2500, date: '2024-01-14' }
+          ]
         };
         localStorage.setItem('cueUsers', JSON.stringify(users));
       }
     }
-    
-    // Create demo account on first load
-    createDemoAccounts();
   </script>
 </body>
 </html>
