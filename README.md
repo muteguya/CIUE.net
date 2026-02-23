@@ -229,11 +229,11 @@
     }
 
     /* Main Dashboard (hidden initially) */
-    #mainDashboard {
+    #mainDashboard, #profilePage {
       display: none;
     }
 
-    /* Welcome Section - REDESIGNED to match image */
+    /* Welcome Section */
     .welcome-section {
       margin-bottom: 30px;
     }
@@ -300,7 +300,7 @@
       letter-spacing: 0.5px;
     }
 
-    /* Card Grid - Redesigned to match image */
+    /* Card Grid */
     .card-grid {
       display: flex;
       flex-direction: column;
@@ -343,7 +343,7 @@
       margin-left: 2px;
     }
 
-    /* Action Row - Redesigned to match image */
+    /* Action Row */
     .action-row {
       display: flex;
       align-items: center;
@@ -388,7 +388,7 @@
       font-size: 1rem;
     }
 
-    /* Bottom Navigation - Redesigned to match image */
+    /* Bottom Navigation */
     .bottom-nav {
       display: flex;
       align-items: center;
@@ -407,6 +407,7 @@
       font-size: 0.75rem;
       font-weight: 500;
       gap: 4px;
+      cursor: pointer;
     }
 
     .nav-item i {
@@ -422,7 +423,7 @@
       color: #000000;
     }
 
-    /* Balance Display - Keep for functionality but style simply */
+    /* Balance Display */
     .balance-container {
       background: #f9f9f9;
       border-radius: 10px;
@@ -487,6 +488,186 @@
 
     .logout-btn:hover {
       background: #f5f5f5;
+    }
+
+    /* PROFILE PAGE STYLES - Exactly matching the image */
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .time {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #000;
+    }
+
+    .profile-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #000;
+    }
+
+    .profile-title i {
+      margin-right: 5px;
+    }
+
+    .employee-info {
+      margin-bottom: 25px;
+    }
+
+    .employee-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 5px;
+    }
+
+    .employee-role {
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 400;
+    }
+
+    /* Wallet Cards */
+    .wallet-grid {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .wallet-card {
+      flex: 1;
+      background: #f9f9f9;
+      border-radius: 15px;
+      padding: 15px;
+      border: 1px solid #eaeaea;
+    }
+
+    .wallet-label {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .wallet-amount {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .wallet-amount small {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #999;
+      margin-left: 2px;
+    }
+
+    /* Action Buttons */
+    .wallet-actions {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 25px;
+    }
+
+    .wallet-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .wallet-action-btn i {
+      font-size: 1.1rem;
+    }
+
+    /* Income Grid */
+    .income-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .income-item {
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 8px;
+    }
+
+    .income-label {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 3px;
+    }
+
+    .income-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .income-value small {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #999;
+      margin-left: 2px;
+    }
+
+    /* Commission Row */
+    .commission-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-top: 1px solid #eaeaea;
+      border-bottom: 1px solid #eaeaea;
+      margin-bottom: 20px;
+    }
+
+    .commission-label {
+      font-size: 0.9rem;
+      color: #000;
+    }
+
+    .commission-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .commission-value small {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #999;
+    }
+
+    /* Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: #000;
+    }
+
+    .menu-item i {
+      font-size: 1rem;
+      color: #666;
+      width: 20px;
     }
 
     /* Deposit Modal Styles */
@@ -744,16 +925,16 @@
       </div>
     </div>
 
-    <!-- MAIN DASHBOARD - REDESIGNED TO MATCH IMAGE -->
+    <!-- MAIN DASHBOARD (Home Page) -->
     <div id="mainDashboard">
-      <!-- Welcome header exactly as in image -->
+      <!-- Welcome header -->
       <div class="welcome-section">
         <div class="welcome-title">WELCOME</div>
         <div class="welcome-subtitle">NEW OPPORTUNITIES AND CHALLENGES WORK TOGETHER TO CREATE A BETTER FUTURE</div>
         <div class="divider-line"></div>
       </div>
 
-      <!-- Balance Display (functional but minimal) -->
+      <!-- Balance Display -->
       <div class="balance-container">
         <div class="balance-label">
           <i class="fas fa-wallet"></i>
@@ -765,18 +946,18 @@
         <button class="history-btn" onclick="showHistory()"><i class="fas fa-history"></i> History</button>
       </div>
 
-      <!-- Collaboration text as in image -->
+      <!-- Collaboration text -->
       <div class="collab-title">
         <i class="fas fa-handshake"></i> Collaboration. We Believe That Every Employee Can:
       </div>
 
-      <!-- Task Hall section as in image -->
+      <!-- Task Hall section -->
       <div class="task-header">
         <h3>Task Hall</h3>
         <span class="teaser-badge">TEASER</span>
       </div>
 
-      <!-- Cards exactly as in image -->
+      <!-- Cards -->
       <div class="card-grid">
         <div class="reward-card">
           <div class="card-left">
@@ -800,7 +981,7 @@
         </div>
       </div>
 
-      <!-- Action row exactly as in image (bullet points) -->
+      <!-- Action row -->
       <div class="action-row">
         <div class="action-item" onclick="openDepositModal()">
           <span>• Recharge</span>
@@ -813,36 +994,142 @@
         </div>
       </div>
 
-      <!-- Company Profile line (simple) -->
+      <!-- Company Profile line -->
       <div class="company-line">
         <span>Company Profile</span>
         <i class="fas fa-chevron-right"></i>
       </div>
 
-      <!-- Bottom navigation exactly as in image -->
+      <!-- Bottom navigation -->
       <div class="bottom-nav">
-        <div class="nav-item active">
+        <div class="nav-item active" onclick="showHomePage()">
+          <i class="fas fa-home"></i>
           <span>Home</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="alert('Task page coming soon')">
+          <i class="fas fa-tasks"></i>
           <span>Task</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="alert('Level page coming soon')">
+          <i class="fas fa-chart-simple"></i>
           <span>Level</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="alert('Income page coming soon')">
+          <i class="fas fa-coins"></i>
           <span>Income</span>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" onclick="showProfilePage()">
+          <i class="fas fa-user"></i>
           <span>Me</span>
         </div>
       </div>
-      
+    </div>
+
+    <!-- PROFILE PAGE (Me Page) - Exactly matching the image -->
+    <div id="profilePage">
+      <!-- Header with time -->
+      <div class="profile-header">
+        <span class="time" id="currentTime">9:24 PM</span>
+        <span class="profile-title"><i class="fas fa-user"></i> Mindy official</span>
+      </div>
+
+      <!-- Employee info -->
+      <div class="employee-info">
+        <div class="employee-name" id="profileName">M3 Regular Employee</div>
+        <div class="employee-role" id="profileRole">Regular Employee</div>
+      </div>
+
+      <!-- Wallet cards -->
+      <div class="wallet-grid">
+        <div class="wallet-card">
+          <div class="wallet-label">Main wallet</div>
+          <div class="wallet-amount" id="mainWallet">0.00 <small>UGX</small></div>
+        </div>
+        <div class="wallet-card">
+          <div class="wallet-label">Commission wallet</div>
+          <div class="wallet-amount" id="commissionWallet">387,566.50 <small>UGX</small></div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="wallet-actions">
+        <button class="wallet-action-btn" onclick="openDepositModal()">
+          <i class="fas fa-lock"></i> Recharge
+        </button>
+        <button class="wallet-action-btn" onclick="alert('Withdraw feature coming soon')">
+          <i class="fas fa-folder"></i> Withdraw
+        </button>
+      </div>
+
+      <!-- Income grid -->
+      <div class="income-grid">
+        <div class="income-item">
+          <div class="income-label">yesterday's income</div>
+          <div class="income-value" id="yesterdayIncome">565.00 <small>UGX</small></div>
+        </div>
+        <div class="income-item">
+          <div class="income-label">today's income</div>
+          <div class="income-value" id="todayIncome">72,340.00 <small>UGX</small></div>
+        </div>
+        <div class="income-item">
+          <div class="income-label">total income</div>
+          <div class="income-value" id="totalIncome">713,066.50 <small>UGX</small></div>
+        </div>
+        <div class="income-item">
+          <div class="income-label">this week's income</div>
+          <div class="income-value" id="weekIncome">72,340.00 <small>UGX</small></div>
+        </div>
+        <div class="income-item">
+          <div class="income-label">this month's income</div>
+          <div class="income-value" id="monthIncome">387,461.50 <small>UGX</small></div>
+        </div>
+      </div>
+
+      <!-- Commission from subordinates -->
+      <div class="commission-row">
+        <span class="commission-label">Commission from subordinate tasks</span>
+        <span class="commission-value" id="subordinateCommission">1,096.50 <small>UGX</small></span>
+      </div>
+
+      <!-- Menu grid -->
+      <div class="menu-grid">
+        <div class="menu-item"><i class="fas fa-clipboard-list"></i> task record</div>
+        <div class="menu-item"><i class="fas fa-users"></i> team report</div>
+        <div class="menu-item"><i class="fas fa-calendar-alt"></i> daily report</div>
+        <div class="menu-item"><i class="fas fa-file-invoice"></i> bill record</div>
+        <div class="menu-item"><i class="fas fa-chart-line"></i> Position Salary</div>
+        <div class="menu-item"><i class="fas fa-download"></i> APP download</div>
+      </div>
+
       <!-- Logout button -->
       <div style="text-align: center; margin-top: 20px;">
         <button class="logout-btn" onclick="logout()">
           <i class="fas fa-sign-out-alt"></i> Logout
         </button>
+      </div>
+
+      <!-- Bottom navigation (same as home) -->
+      <div class="bottom-nav">
+        <div class="nav-item" onclick="showHomePage()">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </div>
+        <div class="nav-item" onclick="alert('Task page coming soon')">
+          <i class="fas fa-tasks"></i>
+          <span>Task</span>
+        </div>
+        <div class="nav-item" onclick="alert('Level page coming soon')">
+          <i class="fas fa-chart-simple"></i>
+          <span>Level</span>
+        </div>
+        <div class="nav-item" onclick="alert('Income page coming soon')">
+          <i class="fas fa-coins"></i>
+          <span>Income</span>
+        </div>
+        <div class="nav-item active" onclick="showProfilePage()">
+          <i class="fas fa-user"></i>
+          <span>Me</span>
+        </div>
       </div>
     </div>
   </div>
@@ -984,6 +1271,7 @@
         password: password,
         registeredDate: new Date().toISOString(),
         balance: 12500,
+        commissionBalance: 387566.50,
         transactions: [
           { type: 'deposit', amount: 10000, date: '2024-01-15' },
           { type: 'deposit', amount: 2500, date: '2024-01-14' }
@@ -1037,10 +1325,46 @@
       if (!user) return;
       
       document.getElementById('balanceAmount').innerHTML = `${(user.balance || 12500).toLocaleString()} <small>UGX</small>`;
+      
+      // Update profile page with user data
+      document.getElementById('profileName').textContent = user.fullName || 'M3 Regular Employee';
+      document.getElementById('mainWallet').innerHTML = `${(user.balance || 12500).toFixed(2)} <small>UGX</small>`;
+      
       window.currentUserPhone = phone;
+      window.currentUser = user;
       
       document.getElementById('authContainer').style.display = 'none';
       document.getElementById('mainDashboard').style.display = 'block';
+      document.getElementById('profilePage').style.display = 'none';
+      
+      // Update time
+      updateTime();
+    }
+
+    // Show profile page
+    function showProfilePage() {
+      document.getElementById('mainDashboard').style.display = 'none';
+      document.getElementById('profilePage').style.display = 'block';
+      
+      // Update time
+      updateTime();
+    }
+
+    // Show home page
+    function showHomePage() {
+      document.getElementById('profilePage').style.display = 'none';
+      document.getElementById('mainDashboard').style.display = 'block';
+    }
+
+    // Update current time
+    function updateTime() {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 12-hour format
+      document.getElementById('currentTime').textContent = `${hours}:${minutes} ${ampm}`;
     }
 
     // Logout function
@@ -1048,6 +1372,7 @@
       localStorage.removeItem('currentUser');
       document.getElementById('authContainer').style.display = 'block';
       document.getElementById('mainDashboard').style.display = 'none';
+      document.getElementById('profilePage').style.display = 'none';
       switchAuthTab('login');
       
       document.getElementById('loginPhone').value = '';
@@ -1113,6 +1438,7 @@
             localStorage.setItem('cueUsers', JSON.stringify(users));
             
             document.getElementById('balanceAmount').innerHTML = `${users[currentUser].balance.toLocaleString()} <small>UGX</small>`;
+            document.getElementById('mainWallet').innerHTML = `${users[currentUser].balance.toFixed(2)} <small>UGX</small>`;
           }
         }
         
@@ -1178,12 +1504,13 @@
       const users = JSON.parse(localStorage.getItem('cueUsers') || '{}');
       if (Object.keys(users).length === 0) {
         users['0756673144'] = {
-          fullName: 'NAMUHANGA VERONIC',
+          fullName: 'Mindy official',
           phone: '0756673144',
           country: 'UG',
           password: '123456',
           registeredDate: new Date().toISOString(),
           balance: 12500,
+          commissionBalance: 387566.50,
           transactions: [
             { type: 'deposit', amount: 10000, date: '2024-01-15' },
             { type: 'deposit', amount: 2500, date: '2024-01-14' }
@@ -1191,6 +1518,9 @@
         };
         localStorage.setItem('cueUsers', JSON.stringify(users));
       }
+      
+      // Update time every minute
+      setInterval(updateTime, 60000);
     }
   </script>
 </body>
